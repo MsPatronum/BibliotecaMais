@@ -1,3 +1,8 @@
 http://www.isbn.bn.br/website/tabela-de-assuntos
 http://www.apel.pt/gest_cnt_upload/editor/File/CDU%281%29.pdf
 http://www.udcsummary.info/exports.htm#
+https://pythonacademy.com.br/blog/desenvolvimento-web-com-python-e-django-model
+https://www.digitalocean.com/community/tutorials/how-to-create-django-models
+https://docs.djangoproject.com/pt-br/2.2/topics/db/models/#fields
+https://rayed.com/posts/2018/05/django-crud-create-retrieve-update-delete/
+https://realpython.com/modeling-polymorphism-django-python/
