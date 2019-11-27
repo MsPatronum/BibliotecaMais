@@ -1,0 +1,49 @@
+    <!DOCTYPE html>  
+    <html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Biblioteca Mais - Livros</title>  
+         {% load staticfiles %}  
+        <link rel="stylesheet" href="{% static 'css/css.css' %}"/>  
+    </head>  
+    <body>  
+    <table class="table table-striped table-bordered table-sm">  
+        <thead class="thead-dark">  
+        <tr>  
+            <th>Livro ID</th>  
+            <th>Título do Livro</th>  
+            <th>Subtítulo do Livro</th>  
+            <th>Sinopse do Livro</th>  
+            <th>ISBN do Livro</th> 
+            <th>Publicação do Livro</th> 
+            <th>Editora do Livro</th>
+            <th>Categoria do Livro</th>  
+            <th>Avaliação do Livro</th>
+            <th>Ações</th>  
+        </tr>  
+        </thead>  
+        <tbody>  
+    {% for livro in livros %}  
+        <tr>  
+            <td>{{ livro.id }}</td>  
+            <td>{{ livro.titulo_livro }}</td>  
+            <td>{{ livro.subtitulo_livro }}</td>  
+            <td>{{ livro.sinopse_livro }}</td>  
+            <td>{{ livro.isbn_livro }}</td>  
+            <td>{{ livro.publicacao_livro }}</td>
+            <td>{{ livro.editora_cod_editora }}</td>  
+            <td>{{ livro.eemail }}</td>  
+            <td>{{ livro.categoria_cod_categoria }}</td>  
+            <td>  
+                <a href="/edit/{{ livro.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                <a href="/delete/{{ livro.id }}">Delete</a>  
+            </td>  
+        </tr>  
+    {% endfor %}  
+        </tbody>  
+    </table>  
+    <br>  
+    <br>  
+    <center><a href="/livro" class="btn btn-primary">Add New Record</a></center>  
+    </body>  
+    </html>  
