@@ -80,7 +80,11 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Categoria do Livro:</label>
           <div class="col-sm-4">
-            {{ form.categoria_cod_categoria }}
+            <select>
+              <option value="{{ form.categoria_cod_categoria }}">
+                {{ cat.nome_categoria }}
+              </option>
+            </select>
           </div>
         </div>
 
