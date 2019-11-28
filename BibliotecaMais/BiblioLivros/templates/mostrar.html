@@ -31,9 +31,9 @@
             <td>{{ livro.sinopse_livro }}</td>  
             <td>{{ livro.isbn_livro }}</td>  
             <td>{{ livro.publicacao_livro }}</td>
-            <td>{{ livro.editora_cod_editora }}</td>  
-            <td>{{ livro.eemail }}</td>  
-            <td>{{ livro.categoria_cod_categoria }}</td>  
+            <td>{{ livro.editora_cod_editora.nome_editora }}</td>
+            <td>{{ livro.categoria_cod_categoria.nome_categoria }}</td>
+            <td>{{ livro.avaliacao_livro }}</td> 
             <td>  
                 <a href="/edit/{{ livro.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
                 <a href="/delete/{{ livro.id }}">Delete</a>  

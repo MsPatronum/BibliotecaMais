@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from BiblioLivros.forms import LivrosFormulario
-from BiblioLivros.models import Livros, Categoria
+from BiblioLivros.models import Livros, Categoria, Editora
 
 def livro(request):
 	if request.method == 'POST':
 		form = LivrosFormulario(request.POST or None)
-		cat = Categoria.objects.only('nome_categoria')
-		print(cat)
+		e = Editora.objects.values('nome_editora')
 		print(form.errors)
 		if form.is_valid():
 			print("form é válido")

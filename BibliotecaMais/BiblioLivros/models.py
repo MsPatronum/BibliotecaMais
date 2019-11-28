@@ -11,9 +11,9 @@ class Livros(models.Model):
 		null = True,
 		blank = True
 		)
-	capa_livro = models.CharField(
-		max_length = 250
-		)
+	#capa_livro = models.CharField(
+	#	max_length = 250
+	#	)
 	sinopse_livro = models.TextField(
 		max_length = 1000
 		)
@@ -47,6 +47,9 @@ class Editora(models.Model):
 		)
 	class Meta:
 		db_table = 'editora'
+
+def __str__(self):
+   	return "{0}".format(self.Editora.nome_editora)
 
 # CLASSE PARA A CRIAÇÃO DA TABELA DE CATEGORIAS
 class Categoria(models.Model):

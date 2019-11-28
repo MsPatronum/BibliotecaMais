@@ -73,18 +73,16 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Editora do Livro:</label>
           <div class="col-sm-4">
-            {{ form.editora_cod_editora }}
+            {% for livro in livros %}  
+              {{ e.nome_editora }}
+            {% endfor %}
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Categoria do Livro:</label>
           <div class="col-sm-4">
-            <select>
-              <option value="{{ form.categoria_cod_categoria }}">
-                {{ cat.nome_categoria }}
-              </option>
-            </select>
+            {{ form.categoria_cod_categoria }}
           </div>
         </div>
 
