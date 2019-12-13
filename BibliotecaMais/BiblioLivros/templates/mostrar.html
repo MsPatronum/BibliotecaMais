@@ -35,8 +35,8 @@
             <td>{{ livro.categoria_cod_categoria.nome_categoria }}</td>
             <td>{{ livro.avaliacao_livro }}</td> 
             <td>  
-                <a href="/edit/{{ livro.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-                <a href="/delete/{{ livro.id }}">Delete</a>  
+                <a class="btn btn-warning" href="/editar/{{ livro.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                <a class="btn btn-danger" href="/delete/{{ livro.id }}">Delete</a>  
             </td>  
         </tr>  
     {% endfor %}  
@@ -44,6 +44,6 @@
     </table>  
     <br>  
     <br>  
-    <center><a href="/livro" class="btn btn-primary">Add New Record</a></center>  
+    <center><a class="btn btn-dark" href="/livro" class="btn btn-primary">Add New Record</a></center>  
     </body>  
     </html>  

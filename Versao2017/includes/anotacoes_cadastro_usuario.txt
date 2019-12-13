@@ -1,7 +1,0 @@
-Anotações referente ao cadastro de usuários
-
-- CPF e RG precisaram de uma consulta especial pelo JavaScript que o Nicolas irá nos passar;
-
-- O endereço também precisa de ligação com o JavaScipt;
-
-- 

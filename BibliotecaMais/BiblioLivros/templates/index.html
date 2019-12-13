@@ -4,96 +4,82 @@
     <meta charset="UTF-8">
     <title>Biblioteca Mais - Livros</title>
     {% load staticfiles %}
+    {% load widget_tweaks %}
     <link rel="stylesheet" href="{% static 'css/css.css' %}"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
   </head>
-
   <body>
     <form method="POST" class="post-form" action="/livro">
-
       {% csrf_token %}
-
-      <div class="container">
-        <br>
-        <div class="form-group row">
-          <label class="col-sm-1 col-form-label"></label>
-          <div class="col-sm-4">
-            <h3>Enter Details</h3>
+      <div class="container-fluid text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1>Cadastro de Exemplar</h1>
+            </div>
           </div>
         </div>
-
-       <!-- <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Id do Livro Id:</label>
-          <div class="col-sm-4">
-            {{ form.id }}
-          </div>
-        </div>
-      -->
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Titulo do Livro:</label>
-          <div class="col-sm-4">
-            {{ form.titulo_livro }}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Subtitulo do Livro:</label>
-          <div class="col-sm-4">
-            {{ form.subtitulo_livro }}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Sinopse do Livro:</label>
-          <div class="col-sm-4">
-            {{ form.sinopse_livro }}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Avaliação do Livro:</label>
-          <div class="col-sm-4">
-            {{ form.avaliacao_livro }}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">ISBN do Livro:</label>
-          <div class="col-sm-4">
-            {{ form.isbn_livro }}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Publicação do Livro:</label>
-          <div class="col-sm-4">
-            {{ form.publicacao_livro }}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Editora do Livro:</label>
-          <div class="col-sm-4">
-            {% for livro in livros %}  
-              {{ e.nome_editora }}
-            {% endfor %}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Categoria do Livro:</label>
-          <div class="col-sm-4">
-            {{ form.categoria_cod_categoria }}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-1 col-form-label"></label>
-          <div class="col-sm-4">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
-
       </div>
-    </form>
-  </body>
+      <br>
+      <div class="container">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Título do Livro</label>
+                {{ form.titulo_livro|add_class:"form-control" }}
+              </div>
+              <div class="col-sm-6">
+                <label>Subtitulo do Livro:</label>
+                {{ form.subtitulo_livro|add_class:"form-control" }}
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-4">
+                  <label>Avaliação do Livro:</label>
+                  {{ form.avaliacao_livro|add_class:"form-control" }}
+                </div>
+                <div class="col-sm-4">
+                  <label>ISBN do Livro:</label>
+                  {{ form.isbn_livro }}
+                </div>
+                <div class="col-sm-4">
+                  <label>Data de publicaçãos</label>
+                  {{ form.publicacao_livro|add_class:"form-control"  }}
+                </div>
+              </div>
+            </div>
+          </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6">
+            <label>Editora do Livro:</label>
+            {{ form.editora_cod_editora|add_class:"selectpicker form-control"|attr:"data-live-search='true'" }}
+          </div>
+          
+          <div class="col-sm-6">
+            <label>Categoria do Livro:</label>
+            {{ form.categoria_cod_categoria|add_class:" selectpicker form-control"|attr:"data-live-search='true'" |attr:"data-show-subtext='true'" }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 </html>

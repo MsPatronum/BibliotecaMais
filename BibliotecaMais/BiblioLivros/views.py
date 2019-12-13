@@ -5,8 +5,7 @@ from BiblioLivros.models import Livros, Categoria, Editora
 def livro(request):
 	if request.method == 'POST':
 		form = LivrosFormulario(request.POST or None)
-		e = Editora.objects.values('nome_editora')
-		print(form.errors)
+		print(form)
 		if form.is_valid():
 			print("form é válido")
 			try:

@@ -19,7 +19,8 @@ class Livros(models.Model):
 		)
 	avaliacao_livro = models.DecimalField(
 		max_digits = 2,
-		decimal_places = 2
+		decimal_places = 2,
+		blank = True
 		)
 	isbn_livro = models.CharField(
 		max_length = 13
@@ -45,11 +46,13 @@ class Editora(models.Model):
 	nome_editora = models.CharField(
 		max_length = 45
 		)
+
+	def __str__(self):
+		return '%s' % self.nome_editora
+
+
 	class Meta:
 		db_table = 'editora'
-
-def __str__(self):
-   	return "{0}".format(self.Editora.nome_editora)
 
 # CLASSE PARA A CRIAÇÃO DA TABELA DE CATEGORIAS
 class Categoria(models.Model):
@@ -59,6 +62,10 @@ class Categoria(models.Model):
 	cod_categoria = models.CharField(
 		max_length = 10
 		)
+
+	def __str__(self):
+		return '%s' % self.nome_categoria
+
 	class Meta:
 		db_table = 'categoria'
 
