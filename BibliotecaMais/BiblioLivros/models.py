@@ -14,9 +14,9 @@ class Livros(models.Model):
 	#capa_livro = models.CharField(
 	#	max_length = 250
 	#	)
-	sinopse_livro = models.TextField(
-		max_length = 1000
-		)
+	#sinopse_livro = models.TextField(
+	#	max_length = 1000
+	#	)
 	avaliacao_livro = models.DecimalField(
 		max_digits = 2,
 		decimal_places = 2,
