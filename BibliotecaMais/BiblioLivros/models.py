@@ -18,7 +18,7 @@ class Livros(models.Model):
 	#	max_length = 1000
 	#	)
 	avaliacao_livro = models.DecimalField(
-		max_digits = 2,
+		max_digits = 3,
 		decimal_places = 2,
 		blank = True
 		)
@@ -40,6 +40,9 @@ class Livros(models.Model):
 
 	class Meta:
 		db_table = 'Livros'
+
+
+
 
 # CLASSE PARA A CRIAÇÃO DA TABELA DE EDITORAS    
 class Editora(models.Model):

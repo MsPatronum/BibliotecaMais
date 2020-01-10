@@ -6,6 +6,7 @@ import pdb
 def livro(request):
 	if request.method == 'POST':
 		form = LivrosFormulario(request.POST or None)
+		print(form)
 		print(form.errors)
 		if form.is_valid():
 			print("form é válido")
@@ -33,7 +34,10 @@ def editar(request,id):
 
 def atualizar(request,id):
 	livro = Livros.objects.get(id=id)
+	print(livro)
 	form = LivrosFormulario(request.POST, instance = livro)
+	print(form)
+	print(form.is_valid())
 	if form.is_valid():
 		return redirect('/mostrar')
 	return render(request, 'editar.html', {'livro':livro})
