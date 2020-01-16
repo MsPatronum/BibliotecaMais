@@ -20,9 +20,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('livro', views.livro),
-    path('mostrar', views.mostrar),
-    path('editar/<int:id>', views.editar),
-    path('atualizar/<int:id>', views.atualizar),
-    path('excluir/<int:id>', views.excluir),
+    path('listar/', views.LivroListarView.as_view(), name='listar_livro_info'),
+    path('criar/', views.LivroCriarView.as_view(), name='criar_livro_info'),
+    path('editar/<int:id>', views.LivroEditarView.as_view(), name='editar_livro_info'),
 ]

@@ -23,20 +23,20 @@
         </tr>  
         </thead>  
         <tbody>  
-    {% for livro in livros %}  
+    {% for listalivros in livros %}  
         <tr>  
-            <td>{{ livro.id }}</td>  
-            <td>{{ livro.titulo_livro }}</td>  
-            <td>{{ livro.subtitulo_livro }}</td>  
-            <td>{{ livro.sinopse_livro }}</td>  
-            <td>{{ livro.isbn_livro }}</td>  
-            <td>{{ livro.publicacao_livro }}</td>
-            <td>{{ livro.editora_cod_editora.nome_editora }}</td>
-            <td>{{ livro.categoria_cod_categoria.nome_categoria }}</td>
-            <td>{{ livro.avaliacao_livro }}</td> 
+            <td>{{ listalivros.id }}</td>  
+            <td>{{ listalivros.titulo_livro }}</td>  
+            <td>{{ listalivros.subtitulo_livro }}</td>  
+            <td>{{ listalivros.sinopse_livro }}</td>  
+            <td>{{ listalivros.isbn_livro }}</td>  
+            <td>{{ listalivros.publicacao_livro }}</td>
+            <td>{{ listalivros.editora_cod_editora.nome_editora }}</td>
+            <td>{{ listalivros.categoria_cod_categoria.nome_categoria }}</td>
+            <td>{{ listalivros.avaliacao_livro }}</td> 
             <td>  
-                <a class="btn btn-warning" href="/editar/{{ livro.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-                <a class="btn btn-danger" href="/delete/{{ livro.id }}">Delete</a>  
+                <a class="btn btn-warning" href="/editar/{{ listalivros.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                <a class="btn btn-danger" href="/delete/{{ listalivros.id }}">Delete</a>  
             </td>  
         </tr>  
     {% endfor %}  
@@ -44,6 +44,6 @@
     </table>  
     <br>  
     <br>  
-    <center><a class="btn btn-dark" href="/livro" class="btn btn-primary">Add New Record</a></center>  
+    <center><a class="btn btn-dark" href="/criar" class="btn btn-primary">Add New Record</a></center>  
     </body>  
     </html>  

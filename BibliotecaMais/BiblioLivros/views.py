@@ -1,48 +1,45 @@
 from django.shortcuts import render, redirect
-from BiblioLivros.forms import LivrosFormulario
-from BiblioLivros.models import Livros, Categoria, Editora
-import pdb
+from django.views import generic
+from django.urls import reverse_lazy
+from BiblioLivros.forms import LivroFormulario
+from BiblioLivros.models import Livros
 
-def livro(request):
-	if request.method == 'POST':
-		form = LivrosFormulario(request.POST or None)
-		print(form)
-		print(form.errors)
+class LivroListarView(generic.ListView):
+	model = Livros
+	template_name = 'mostrar.html'
+
+	def get_queryset(self):
+		listalivros = self.model.objects.all()
+		return listalivros
+
+class LivroCriarView(generic.CreateView):
+	model = Livros
+	form_class = LivroFormulario
+	template_name = 'criar.html'
+
+	def formulario_valido(self, form):
 		if form.is_valid():
-			print("form é válido")
-			try:
-				form.save()
-				print("form salvo")
-				return redirect('/mostrar')
-			except:
-				print("form não salvo")
-				pass
-		else:
-			print("form não é válido")
-	else:
-		form = LivrosFormulario()
-	return render(request, 'index.html', {'form':form})
+			print(form)
+			form.save(self.request)
+			return redirect('listar_livro_info')
+		print(form)
 
+class LivroEditarView(generic.UpdateView):
+	model = Livros
+	form_class = LivroFormulario
+	template_name = 'livro-form.html'
+	success_url = reverse_lazy('listar_livro_info')
 
-def mostrar(request):
-	livros = Livros.objects.all()
-	return render(request,'mostrar.html',{'livros':livros})
+	#pegar o objeto
+	def get_objeto(self, *args, **kwargs):
+		livro_info = get_object_or_404(Livros, pk=self.kwargs['id'])
+		return livro_info
 
-def editar(request,id):
-	livro = Livros.objects.get(id=id)
-	return render(request,'editar.html',{'livro':livro})
+	def formulario_valido(self, form):
+		form.save(self.request)
+		return redirect('listar_livro_info')
 
-def atualizar(request,id):
-	livro = Livros.objects.get(id=id)
-	print(livro)
-	form = LivrosFormulario(request.POST, instance = livro)
-	print(form)
-	print(form.is_valid())
-	if form.is_valid():
-		return redirect('/mostrar')
-	return render(request, 'editar.html', {'livro':livro})
-
-def excluir(request, id):
-	livro = LivrosFormulario.objects.get(id=id)
-	livro.delete()
-	return redirect('/show')
+#def excluir(request, id):
+#	livro = LivrosFormulario.objects.get(id=id)
+#	livro.delete()
+#	return redirect('/show')

@@ -12,10 +12,12 @@ class Livros(models.Model):
 		blank = True
 		)
 	#capa_livro = models.CharField(
-	#	max_length = 250
+	#	max_length = 250,
+	#	null = True
 	#	)
 	#sinopse_livro = models.TextField(
-	#	max_length = 1000
+	#	max_length = 1000,
+	#	default = "Teste"
 	#	)
 	avaliacao_livro = models.DecimalField(
 		max_digits = 3,
