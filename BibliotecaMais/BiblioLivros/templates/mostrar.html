@@ -1,19 +1,13 @@
-    <!DOCTYPE html>  
-    <html lang="en">  
-    <head>  
-        <meta charset="UTF-8">  
-        <title>Biblioteca Mais - Livros</title>  
-         {% load staticfiles %}  
-        <link rel="stylesheet" href="{% static 'css/css.css' %}"/>  
-    </head>  
-    <body>  
-    <table class="table table-striped table-bordered table-sm">  
-        <thead class="thead-dark">  
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+    
+    <table class="table table-striped table-sm">  
+        <thead class="">  
         <tr>  
-            <th>Livro ID</th>  
             <th>Título do Livro</th>  
             <th>Subtítulo do Livro</th>  
-            <th>Sinopse do Livro</th>  
             <th>ISBN do Livro</th> 
             <th>Publicação do Livro</th> 
             <th>Editora do Livro</th>
@@ -23,27 +17,41 @@
         </tr>  
         </thead>  
         <tbody>  
-    {% for listalivros in livros %}  
+    {% for livro in object_list %}  
         <tr>  
-            <td>{{ listalivros.id }}</td>  
-            <td>{{ listalivros.titulo_livro }}</td>  
-            <td>{{ listalivros.subtitulo_livro }}</td>  
-            <td>{{ listalivros.sinopse_livro }}</td>  
-            <td>{{ listalivros.isbn_livro }}</td>  
-            <td>{{ listalivros.publicacao_livro }}</td>
-            <td>{{ listalivros.editora_cod_editora.nome_editora }}</td>
-            <td>{{ listalivros.categoria_cod_categoria.nome_categoria }}</td>
-            <td>{{ listalivros.avaliacao_livro }}</td> 
+            <td>{{ livro.titulo_livro }}</td>  
+            <td>{{ livro.subtitulo_livro }}</td> 
+            <td>{{ livro.isbn_livro }}</td>  
+            <td>{{ livro.publicacao_livro }}</td>
+            <td>{{ livro.editora_cod_editora.nome_editora }}</td>
+            <td>{{ livro.categoria_cod_categoria.nome_categoria }}</td>
+            <td>{{ livro.avaliacao_livro }}</td> 
             <td>  
-                <a class="btn btn-warning" href="/editar/{{ listalivros.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-                <a class="btn btn-danger" href="/delete/{{ listalivros.id }}">Delete</a>  
+                <a class="btn btn-warning" href="/editar/{{ livro.id }}"><span class="oi oi-arrow-left"></span>Edit</span></a>  
+                <a class="btn btn-danger" href="/deletar/{{ livro.id }}">Delete</a>  
             </td>  
         </tr>  
     {% endfor %}  
         </tbody>  
     </table>  
+    {% block pagination %}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a class="btn" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="btn" class="page-current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a class="btn" href="{{ request.path }}?page={{ page_obj.next_page_number }}">Prox.</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+  {% endblock %} 
     <br>  
     <br>  
     <center><a class="btn btn-dark" href="/criar" class="btn btn-primary">Add New Record</a></center>  
-    </body>  
-    </html>  
+ {% endblock %}  

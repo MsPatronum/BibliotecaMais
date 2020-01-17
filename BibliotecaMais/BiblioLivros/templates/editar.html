@@ -1,86 +1,87 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 {% block content %}
-    <form method="POST" class="post-form" action="/atualizar/{{ livro.id }}">
-        {% csrf_token %}
-        <div class="container-fluid text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h1>Edição de Exemplar</h1>
-                    </div>
-                </div>
-            </div>
+{% load static %}
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+
+
+  <form method="POST" class="form" action="">
+    {% csrf_token %}
+    <div class="container-fluid text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>Cadastro de Exemplar</h1>
+          </div>
         </div>
-        
-        <br>
-        <div class="container">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label>Título do Livro</label>
-                            <input type="text" name="titulo_livro" id="id_titulo_livro" value="{{ edit_livro.titulo_livro}}" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Subtitulo do Livro:</label>
-                            <input type="text" name="subtitulo_livro" id="id_subtitulo_livro" value="{{ edit_livro.subtitulo_livro}}" class="form-control">
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Título do Livro</label>
+              {{ form.titulo_livro|add_class:"form-control" }}
             </div>
-        </div>
-        <div class="container">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label>Avaliação do Livro:</label>
-                            <input type="text" name="avaliacao_livro" id="id_avaliacao_livro" value="{{ edit_livro.avaliacao_livro}}" class="form-control" readonly>
-                        </div>
-                        <div class="col-sm-4">
-                            <label>ISBN do Livro:</label>
-                            {{ form.isbn_livro| add_class:"form-control" }}
-                            <input type="text" name="isbn_livro" id="id_isbn_livro" value="{{ edit_livro.isbn_livro}}" class="form-control" readonly>
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Data de publicação</label>
-                            <input type="text" name="publicacao_livro" id="id_publicacao_livro" value="{{ edit_livro.publicacao_livro | date:'d/m/Y'}}" class="form-control" readonly>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-6">
+              <label>Subtitulo do Livro:</label>
+              {{ form.subtitulo_livro|add_class:"form-control" }}
             </div>
+          </div>
         </div>
-        <div class="container">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label>Categoria do Livro:</label>
-                            <select class="selectpicker form-control" data-live-search="true">
-                                {% for livros in Livros %}
-                                <option value="{{ edit_livro.editora_cod_editora }}">{{ edit_livro.categoria_cod_categoria }}</option>
-                                {% endfor %}                                
-                            </select>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4">
+              <label>Avaliação do Livro:</label>
+              {{ form.avaliacao_livro|add_class:"form-control" | attr:"readonly"}}
             </div>
-        </div>
-        {% for x in x %}
-            <p>teste</p>
-        {% endfor %}
-        <div class="container">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-8"></div>
-                        <div class="col-sm-4">
-                            <button type="submit" class="btn-outline-primary btn float-right">Salvar</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-4">
+              <label>ISBN do Livro:</label>
+              {{ form.isbn_livro| add_class:"form-control" | attr:"readonly" }}
             </div>
+            <div class="col-sm-4">
+              <label>Data de publicação</label>
+              {{ form.publicacao_livro|add_class:"form-control data"  }}
+            </div>
+          </div>
         </div>
-    </form>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Editora do Livro:</label>
+              {{ form.editora_cod_editora|add_class:"selectpicker form-control"|attr:"data-live-search='true'" }}
+            </div>
+            <div class="col-sm-6">
+              <label>Categoria do Livro:</label>
+              {{form.categoria_cod_categoria|add_class:"selectpicker form-control"|attr:"data-live-search='true'" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <button type="submit" class="btn-outline-primary btn float-right">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 {% endblock %}

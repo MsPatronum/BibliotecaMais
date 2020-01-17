@@ -9,3 +9,7 @@ https://realpython.com/modeling-polymorphism-django-python/
 
 
 https://django-star-ratings.readthedocs.io/en/latest/
+
+
+https://pypi.org/project/django-bootstrap-modal-forms/
+$ pip install django-bootstrap-modal-forms
