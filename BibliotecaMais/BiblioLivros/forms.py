@@ -1,5 +1,6 @@
 from django import forms
-from BiblioLivros.models import Livros, Categoria
+from BiblioLivros.models import Livros, Autores, AutorLivro
+from django.forms.models import inlineformset_factory
 
 class LivroFormulario(forms.ModelForm):
 
@@ -7,9 +8,14 @@ class LivroFormulario(forms.ModelForm):
 		model = Livros
 		fields = ['titulo_livro','subtitulo_livro','avaliacao_livro','isbn_livro','publicacao_livro','categoria_cod_categoria','editora_cod_editora',]
 
+class AutorFormulario(forms.ModelForm):
+	class Meta:
+		model = Autores
+		fields = ['nome_autor', 'sexo_autor']
 
-	def __init__(self, *args, **kwargs):
-		super(LivroFormulario, self).__init__(*args, **kwargs)
-		self.fields['categoria_cod_categoria'].queryset = Categoria.objects.all()
-	
-	
+class AutorLivro_LivroFormulario(forms.ModelForm):
+	class Meta:
+		model = AutorLivro
+		exclude = ()
+
+AutorLivroFormSet = inlineformset_factory(Livros, AutorLivro, form = AutorLivro_LivroFormulario, extra = 1)

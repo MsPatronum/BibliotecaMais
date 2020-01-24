@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    {% load static %}
+    
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="container-fluid">
+                    <p>Navegue por aqui!</p>
+                    <hr>
+                    <a class="btn btn-outline-dark btn-block m-1" href="/listar_livro/" class="btn btn-primary">Lista de Livros</a>
+                    <a class="btn btn-outline-dark btn-block m-1" href="/criar_livro/" class="btn btn-primary">Criar Novo Livro</a>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- AQUI COMEÇA A LISTAGEM PERSONALIZADA-->
+                        {% block lista_personalizada %}
+                        {% endblock %}                   
+                    </div>
+                </div>
+                {% block pagination %}
+                    {% if is_paginated %}
+                        <div class="pagination">
+                            <span class="page-links">
+                                {% if page_obj.has_previous %}
+                                    <a class="btn" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                                {% endif %}
+                                <span class="btn" class="page-current">
+                                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                                </span>
+                                {% if page_obj.has_next %}
+                                    <a class="btn" href="{{ request.path }}?page={{ page_obj.next_page_number }}">Prox.</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

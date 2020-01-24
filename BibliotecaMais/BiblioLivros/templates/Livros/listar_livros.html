@@ -1,0 +1,25 @@
+{% extends 'lista_base.html' %}
+{% block lista_personalizada %}
+    {% for livro in object_list %}
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xl-3 my-1 ">
+            <div class="container-fluid bg-light rounded">
+                <p>Título: {{ livro.titulo_livro }}</p>
+                <p>Subtítulo: {{ livro.subtitulo_livro }}</p>
+                <p> Editora: {{ livro.editora_cod_editora.nome_editora }}</p>
+                <p>Categoria: {{ livro.categoria_cod_categoria.nome_categoria }}</p>
+                <p>Avaliação: {{ livro.avaliacao_livro }}</p>
+                <p>ISBN: {{ livro.isbn_livro }}</p>
+                <p>Publicação: {{ livro.publicacao_livro }}</p>
+                <!-- BOTÕES -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn btn-outline-warning btn-block my-1" href="/editar_livro/{{ livro.id }}">Edit</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-outline-danger btn-block my-1 " href="/deletar_livro/{{ livro.id }}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

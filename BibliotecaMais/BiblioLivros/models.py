@@ -75,3 +75,39 @@ class Categoria(models.Model):
 		db_table = 'categoria'
 
 objetos = models.Manager()
+
+# CLASSE PARA CRIAÇÃO DE AUTORES
+class Autores(models.Model):
+	nome_autor = models.CharField(
+		max_length = 100
+		)
+	sexo_autor = models.CharField(
+		max_length = 1
+		)
+
+	def __str__(self):
+		return '%s' % self.nome_autor
+
+	class Meta:
+		db_table = 'autores'
+		
+
+# CLASSE PARA CONEXÃO ENTRE AUTOR E LIVRO
+
+class AutorLivro(models.Model):
+	autor_cod_autor = models.ForeignKey(
+		'Autores',
+		on_delete = models.CASCADE
+		)
+	livro_cod_livro = models.ForeignKey(
+		'Livros',
+		on_delete = models.CASCADE
+		)
+	ordinal_autorlivro = models.IntegerField(
+		)
+	autor_funcao = models.CharField(
+		max_length = 20
+		)
+
+	class Meta:
+		db_table = 'autorlivro'
