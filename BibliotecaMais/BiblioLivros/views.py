@@ -7,17 +7,21 @@ from BiblioLivros.forms import LivroFormulario, AutorFormulario, AutorLivroFormS
 from BiblioLivros.models import Livros, Autores
 from django.urls import reverse
 
+
+# CLASSE GENÉRICA PARA A LISTAGEM DOS LIVROS
 class LivroListarView(generic.ListView):
 	model = Livros
 	template_name = 'Livros/listar_livros.html'
 	paginate_by = 12
 	
+# CLASSE GENÉRICA PARA A CRIAÇÃO DOS LIVROS
 class LivroCriarView(generic.CreateView):
 	model = Livros
 	form_class = LivroFormulario
 	template_name = 'Livros/criar_livros.html'
 	success_url = '/listar_livro/'
 	
+	#AQUI ESTÁ PEGANDO O INLINE_FORMSET CRIADO E INSERINDO COMO UM CONTEXTO
 	def get_context_data(self, **kwargs):
 		data = super(LivroCriarView, self).get_context_data(**kwargs)
 		if self.request.POST:
@@ -26,7 +30,7 @@ class LivroCriarView(generic.CreateView):
 			data['autor_livro'] = AutorLivroFormSet()
 		return data
 
-
+	# AQUI ESTÁ VALIDANDO O FORMULÁRIO
 	def form_valid(self, form):
 		context = self.get_context_data()
 		autor_livro = context['autor_livro']

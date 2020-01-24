@@ -1,108 +1,105 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 {% block content %}
-  {% load static %}  
-<form method="POST" class="form" action="">
-  {% csrf_token %}
-  <div class="container">
-    <div class="col-sm-12">
-      <div class="form-group">
-        <a class="btn btn-outline-dark my-3 " href="/listar_livro/" class="btn btn-primary">Voltar para a lista</a>
-        <hr>
-        <div class="container-fluid text-center">
-          <div class="container">
+  {% load static %}
+  <form method="POST" class="form" action="">
+    {% csrf_token %}
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <a class="btn btn-outline-dark my-3 " href="/listar_livro/" class="btn btn-primary">Voltar para a lista</a>
+          <hr>
+          <div class="container-fluid text-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h1>Cadastro de Exemplar</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Título do Livro</label>
+              {{ form.titulo_livro|add_class:"form-control" }}
+            </div>
+            <div class="col-sm-6">
+              <label>Subtitulo do Livro:</label>
+              {{ form.subtitulo_livro|add_class:"form-control" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4">
+              <label>Avaliação do Livro:</label>
+              {{ form.avaliacao_livro|add_class:"form-control" }}
+            </div>
+            <div class="col-sm-4">
+              <label>ISBN do Livro:</label>
+              {{ form.isbn_livro| add_class:"form-control" }}
+            </div>
+            <div class="col-sm-4">
+              <label>Data de publicação</label>
+              {{ form.publicacao_livro|add_class:"form-control data"  }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Editora do Livro:</label>
+              {{ form.editora_cod_editora|add_class:"selectpicker form-control"|attr:"data-live-search='true'" }}
+            </div>
+            <div class="col-sm-6">
+              <label>Categoria do Livro:</label>
+              {{form.categoria_cod_categoria|add_class:"selectpicker form-control"|attr:"data-live-search='true'" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        {{ autor_livro.management_form }}
+          {% for form in autor_livro.forms %}
+            <div class="{% cycle 'row1' 'row2' %} formset_row">
+              {{ form.autor_cod_autor|add_class:"selectpicker form-control"|attr:"data-live-search='true'"  }}
+              {{ form.ordinal_autorlivro|add_class:"form-control" }}
+              {{ form.autor_funcao|add_class:"form-control" }}
+            </div>
+          {% endfor %}
+      </div>
+      <div class="container">
+        <div class="col-sm-12">
+          <div class="form-group">
             <div class="row">
-              <div class="col-sm-12">
-                <h1>Cadastro de Exemplar</h1>
+              <div class="col-sm-8"></div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn-outline-primary btn float-right">Salvar</button>
               </div>
             </div>
           </div>
         </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-6">
-            <label>Título do Livro</label>
-            {{ form.titulo_livro|add_class:"form-control" }}
-          </div>
-          <div class="col-sm-6">
-            <label>Subtitulo do Livro:</label>
-            {{ form.subtitulo_livro|add_class:"form-control" }}
-          </div>
-        </div>
       </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="col-sm-12">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-4">
-            <label>Avaliação do Livro:</label>
-            {{ form.avaliacao_livro|add_class:"form-control" }}
-          </div>
-          <div class="col-sm-4">
-            <label>ISBN do Livro:</label>
-            {{ form.isbn_livro| add_class:"form-control" }}
-          </div>
-          <div class="col-sm-4">
-            <label>Data de publicação</label>
-            {{ form.publicacao_livro|add_class:"form-control data"  }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="col-sm-12">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-6">
-            <label>Editora do Livro:</label>
-            {{ form.editora_cod_editora|add_class:"selectpicker form-control"|attr:"data-live-search='true'" }}
-          </div>
-          <div class="col-sm-6">
-            <label>Categoria do Livro:</label>
-            {{form.categoria_cod_categoria|add_class:"selectpicker form-control"|attr:"data-live-search='true'" }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-            {{ autor_livro.management_form }}
-
-            {% for form in autor_livro.forms %}
-                <div class="{% cycle 'row1' 'row2' %} formset_row">
-                    {{ form.autor_cod_autor }}
-                    {{ form.ordinal_autorlivro }}
-                    {{ form.autor_funcao }}
-                </div>
-            {% endfor %}
-        </div>
-  <div class="container">
-    <div class="col-sm-12">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-8"></div>
-          <div class="col-sm-4">
-            <button type="submit" class="btn-outline-primary btn float-right">Salvar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-{% block scripts %}
-<script src="{% static 'js/jquery.formset.js' %}"></script>
-<script type="text/javascript">
-    $('.formset_row').formset({
-        addText: 'Adicionar Autor',
-        deleteText: 'Remover',
-        prefix: 'autorlivro_set'
-    });
-</script>
-{% endblock %}
-
-{% endblock %}
-
-
+    </form>
+    {% block scripts %}
+       <script src="{% static 'js/jquery.formset.js' %}"></script>
+      <script type="text/javascript">
+      $('.formset_row').formset({
+      addText: 'Adicionar Autor',
+      deleteText: 'Remover',
+      prefix: 'autorlivro_set'
+      });
+      </script>
+    {% endblock %}
+  {% endblock %}
