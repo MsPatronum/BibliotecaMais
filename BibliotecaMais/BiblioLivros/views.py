@@ -62,8 +62,26 @@ class LivroDeletarView(generic.DeleteView):
 
 # AUTORES!!
 
-class AutorFormView(generic.CreateView):
+class AutorListarView(generic.ListView):
 	model = Autores
-	form_class = AutorFormulario
 	template_name = 'Autores/listar_autores.html'
-	success_url = '/listar_livro/'
+	paginate_by = 12
+
+
+class AutorCriarView(generic.CreateView):
+	model = Livros
+	form_class = AutorFormulario
+	template_name = 'Autores/criar_autores.html'
+	success_url = '/listar_autor/'
+	
+class AutorEditarView(generic.UpdateView):
+	model = Livros
+	template_name = 'Livros/editar_livros.html'
+	form_class = LivroFormulario
+	success_url = '/listar_autor/'
+
+class AutorDeletarView(generic.DeleteView):
+	model = Livros
+	template_name = 'Autores/autor_confirm_delete.html'
+	form_class = LivroFormulario
+	success_url = '/listar_autor/'

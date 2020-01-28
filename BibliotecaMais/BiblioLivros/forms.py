@@ -12,7 +12,7 @@ class LivroFormulario(forms.ModelForm):
 class AutorFormulario(forms.ModelForm):
 	class Meta:
 		model = Autores
-		fields = ['nome_autor', 'sexo_autor']
+		exclude = ()
 
 # FORMULARIO QUE LIDA COM AS TABELAS AUTORES, LIVROS E AUTORLIVRO, ONDE AUTORLIVRO É UMA ENTIDADE FRACA E TEM FOREIGN KEYS DAS OUTRAS DUAS TABELAS
 class AutorLivro_LivroFormulario(forms.ModelForm):

@@ -5,20 +5,15 @@
     
     <div class="col-sm-12">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="container-fluid">
-                    <p>Navegue por aqui!</p>
-                    <hr>
-                    <a class="btn btn-outline-dark btn-block m-1" href="/listar_livro/" class="btn btn-primary">Lista de Livros</a>
-                    <a class="btn btn-outline-dark btn-block m-1" href="/criar_livro/" class="btn btn-primary">Criar Novo Livro</a>
-                </div>
-            </div>
+            {% include 'menu.html' %}
+            {% block menu %}
+            {% endblock %}
             <div class="col-sm-9">
                 <div class="container-fluid">
                     <div class="row">
                         <!-- AQUI COMEÇA A LISTAGEM PERSONALIZADA-->
                         {% block lista_personalizada %}
-                        {% endblock %}                   
+                        {% endblock %}
                     </div>
                 </div>
                 {% block pagination %}
@@ -38,7 +33,6 @@
                         </div>
                     {% endif %}
                 {% endblock %}
-
             </div>
         </div>
     </div>

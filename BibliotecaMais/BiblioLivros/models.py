@@ -27,9 +27,9 @@ class Livros(models.Model):
 	isbn_livro = models.CharField(
 		max_length = 13
 	) 
-	publicacao_livro = models.DateField(
-		auto_now = False,
-		auto_now_add = False
+	publicacao_livro = models.DecimalField(
+		max_digits = 4,
+		decimal_places = 0
 		)
 	editora_cod_editora = models.ForeignKey(
 		'Editora',
@@ -79,14 +79,22 @@ objetos = models.Manager()
 # CLASSE PARA CRIAÇÃO DE AUTORES
 class Autores(models.Model):
 	nome_autor = models.CharField(
-		max_length = 100
+		max_length = 45
+		)
+	sobrenome_autor = models.CharField(
+		max_length = 45
+		)
+	datanasc_autor = models.DateField(
+		auto_now = False,
+		auto_now_add = False
 		)
 	sexo_autor = models.CharField(
-		max_length = 1
+		max_length = 1,
+		choices = [('F', 'Feminino'), ('M', 'Masculino')]
 		)
 
 	def __str__(self):
-		return '%s' % self.nome_autor
+		return "{0} {1}".format(self.nome_autor, self.sobrenome_autor)
 
 	class Meta:
 		db_table = 'autores'

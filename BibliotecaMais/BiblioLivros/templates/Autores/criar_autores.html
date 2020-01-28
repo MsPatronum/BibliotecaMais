@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+  {% load static %}
+  <form method="POST" class="form" action="">
+    {% csrf_token %}
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <a class="btn btn-outline-dark my-3 " href="/listar_autor/" class="btn btn-primary">Voltar para a lista</a>
+          <hr>
+          <div class="container-fluid text-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h1>Cadastro de Autores</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Nome do Autor</label>
+              {{ form.nome_autor|add_class:"form-control" }}
+            </div>
+            <div class="col-sm-6">
+              <label>Sobrenome do Autor:</label>
+              {{ form.sobrenome_autor|add_class:"form-control" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+              <label>Data de nascimento</label>
+              {{ form.datanasc_autor|add_class:"form-control data"  }}
+            </div>
+            <div class="col-sm-4">
+              <label>Sexo</label>
+              {{ form.sexo_autor|add_class:"form-control"}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="container">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-8"></div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn-outline-primary btn float-right">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {% endblock %}

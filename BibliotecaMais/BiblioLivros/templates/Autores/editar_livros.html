@@ -2,6 +2,8 @@
 {% load widget_tweaks %}
 {% block content %}
   {% load static %}
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
   <form method="POST" class="form" action="">
     {% csrf_token %}
     <div class="container">
@@ -38,11 +40,11 @@
           <div class="row">
             <div class="col-sm-4">
               <label>Avaliação do Livro:</label>
-              {{ form.avaliacao_livro|add_class:"form-control" }}
+              {{ form.avaliacao_livro|add_class:"form-control" | attr:"readonly"}}
             </div>
             <div class="col-sm-4">
               <label>ISBN do Livro:</label>
-              {{ form.isbn_livro| add_class:"form-control" }}
+              {{ form.isbn_livro| add_class:"form-control" | attr:"readonly" }}
             </div>
             <div class="col-sm-4">
               <label>Data de publicação</label>
@@ -71,38 +73,14 @@
     <div class="container">
       <div class="col-sm-12">
         <div class="form-group">
-        {{ autor_livro.management_form }}
-          {% for form in autor_livro.forms %}
-            <div class="{% cycle 'row1' 'row2' %} formset_row selectpicker">
-              {{ form.autor_cod_autor|add_class:"form-control"|attr:"data-live-search='true'"  }}
-              {{ form.ordinal_autorlivro|add_class:"selectpicker form-control" }}
-              {{ form.autor_funcao|add_class:"selectpicker form-control" }}
-            </div>
-          {% endfor %}
-          </div>
-      </div>
-      <div class="container">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-8"></div>
-              <div class="col-sm-4">
-                <button type="submit" class="btn-outline-primary btn float-right">Salvar</button>
-              </div>
+          <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+              <button type="submit" class="btn-outline-primary btn float-right">Salvar</button>
             </div>
           </div>
         </div>
       </div>
-    </form>
-    {% block scripts %}
-      <script src="{% static 'js/jquery.formset.js' %}"></script>
-      <script type="text/javascript">
-        $('.formset_row').formset({
-          extraClasses: ['selectpicker'],
-          addText: 'Adicionar Autor',
-          deleteText: 'Remover',
-          prefix: 'autorlivro_set'
-        });
-      </script>
-    {% endblock %}
-  {% endblock %}
+    </div>
+  </form>
+{% endblock %}
