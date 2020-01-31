@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{{ form.media.css }}
+{% block links %}
+ 
+{% endblock %}
 {% block content %}
   {% load static %}
   <form method="POST" class="form" action="">
@@ -68,15 +72,19 @@
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="col-sm-12">
+        <hr>
+        <h4>Adicionar Autor</h4>
+        <hr>
         <div class="form-group">
         {{ autor_livro.management_form }}
           {% for form in autor_livro.forms %}
-            <div class="{% cycle 'row1' 'row2' %} formset_row selectpicker">
-              {{ form.autor_cod_autor|add_class:"form-control"|attr:"data-live-search='true'"  }}
-              {{ form.ordinal_autorlivro|add_class:"selectpicker form-control" }}
-              {{ form.autor_funcao|add_class:"selectpicker form-control" }}
+            <div class="{% cycle 'row1' 'row2' %} col-sm-10 formset_row m-5 input-group">
+              {{ form.autor_cod_autor|add_class:"form-control selectpicker"|attr:"data-live-search='true'" }}
+              {{ form.ordinal_autorlivro|add_class:"form-control" }}
+              {{ form.autor_funcao|add_class:"form-control" }}
             </div>
           {% endfor %}
           </div>
@@ -95,14 +103,19 @@
       </div>
     </form>
     {% block scripts %}
+    {{ form.media.js }}
       <script src="{% static 'js/jquery.formset.js' %}"></script>
       <script type="text/javascript">
-        $('.formset_row').formset({
-          extraClasses: ['selectpicker'],
-          addText: 'Adicionar Autor',
-          deleteText: 'Remover',
-          prefix: 'autorlivro_set'
-        });
+         var activate_select = function(row){
+        row.find('.selectpicker').selectpicker();
+    };
+
+    $('.formset_row').formset({
+        addText: 'Adicionar Autor',
+        deleteText: 'Remover',
+        prefix: 'autorlivro_set',
+        added: activate_select
+    });
       </script>
     {% endblock %}
   {% endblock %}

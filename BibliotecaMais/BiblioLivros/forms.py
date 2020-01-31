@@ -1,6 +1,7 @@
 from django import forms
 from BiblioLivros.models import Livros, Autores, AutorLivro
 from django.forms.models import inlineformset_factory
+from django_select2.forms import Select2Widget
 
 # FORMULARIO PARA A TABELA LIVROS
 class LivroFormulario(forms.ModelForm):
@@ -19,5 +20,8 @@ class AutorLivro_LivroFormulario(forms.ModelForm):
 	class Meta:
 		model = AutorLivro
 		exclude = ()
+		widgets = {
+			'autor_cod_autor': Select2Widget,
+		}
 # FORMSET QUE LIDA COM A LINKAGEM DAS TABELAS, VENDO A FOREIGN KEY DA TABELA AUTORLIVRO E PROCURANDO A CORRESPONDENTE NA TABELA LIVROS
 AutorLivroFormSet = inlineformset_factory(Livros, AutorLivro, form = AutorLivro_LivroFormulario, extra = 1)

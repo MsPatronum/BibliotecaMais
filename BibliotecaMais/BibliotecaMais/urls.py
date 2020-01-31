@@ -30,4 +30,5 @@ urlpatterns = [
     path('criar_autor/', views.AutorCriarView.as_view(), name='criar_autor_info'),
     path('editar_autor/<int:pk>', views.AutorEditarView.as_view(), name='editar_autor_info'),
     path('deletar_autor/<int:pk>', views.AutorDeletarView.as_view(), name='deletar_autor_info'),
+    path(r'select2/', include('django_select2.urls')),
 ]

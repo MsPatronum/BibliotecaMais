@@ -1,5 +1,16 @@
 {% extends 'lista_base.html' %}
 {% block lista_personalizada %}
-    {{ form.nome_autor }}
-    {{ form.sexo_autor }}
+    {% for autor in object_list %}
+        <div class="col-lg-4 col-md-6 col-sm-12 my-1 ">
+            <div class="container-fluid bg-light rounded">
+                <p>{{ autor.nome_autor| add:" "|add:autor.sobrenome_autor|title }}</p>
+                {% if autor.sexo_autor == 'F' %}
+                    <p>Feminino</p>
+                {% else %}
+                    <p>Maculino</p>
+                {% endif %}
+                <p>{{ autor.datanasc_autor|date:'d/m/Y' }}</p>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

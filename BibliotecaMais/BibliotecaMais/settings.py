@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     # 'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    #'star_ratings',
+    'django_select2',
     #'bootstrap_modal_forms',
 ]
 
