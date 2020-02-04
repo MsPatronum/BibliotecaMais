@@ -129,5 +129,11 @@ APPEND_SLASH=False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# redirecionamento
 LOGIN_REDIRECT_URL = '/listar_livro/'
-LOGOUT_REDIRECT_URL = '/listar_livro/'
+LOGOUT_REDIRECT_URL = '/contas/login/'
+
+# teste de email
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

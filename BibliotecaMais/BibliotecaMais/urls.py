@@ -15,20 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from BiblioLivros import views
+from BiblioLivros import views as BLivros_views
+from BiblioUsuarios import views as BUsuarios_views
 from django.conf.urls import include
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='login.html'), name='home'),
+    # URLS BIBLIOLIVROS
     # URLS DE LOVROS
-    path('criar_livro/', views.LivroCriarView.as_view(), name='criar_livro_info'),
-    path('listar_livro/', views.LivroListarView.as_view(), name='listar_livro_info'),
-    path('editar_livro/<int:pk>', views.LivroEditarView.as_view(), name='editar_livro_info'),
-    path('deletar_livro/<int:pk>', views.LivroDeletarView.as_view(), name='deletar_livro_info'),
+    path('criar_livro/', BLivros_views.LivroCriarView.as_view(), name='criar_livro_info'),
+    path('listar_livro/', BLivros_views.LivroListarView.as_view(), name='listar_livro_info'),
+    path('editar_livro/<int:pk>', BLivros_views.LivroEditarView.as_view(), name='editar_livro_info'),
+    path('deletar_livro/<int:pk>', BLivros_views.LivroDeletarView.as_view(), name='deletar_livro_info'),
     # URLS DE AUTORES
-    path('listar_autor/', views.AutorListarView.as_view(), name='listar_autor_info'),
-    path('criar_autor/', views.AutorCriarView.as_view(), name='criar_autor_info'),
-    path('editar_autor/<int:pk>', views.AutorEditarView.as_view(), name='editar_autor_info'),
-    path('deletar_autor/<int:pk>', views.AutorDeletarView.as_view(), name='deletar_autor_info'),
+    path('listar_autor/', BLivros_views.AutorListarView.as_view(), name='listar_autor_info'),
+    path('criar_autor/', BLivros_views.AutorCriarView.as_view(), name='criar_autor_info'),
+    path('editar_autor/<int:pk>', BLivros_views.AutorEditarView.as_view(), name='editar_autor_info'),
+    path('deletar_autor/<int:pk>', BLivros_views.AutorDeletarView.as_view(), name='deletar_autor_info'),
+    # URLS DE USUÁRIOS
     path('contas/', include('django.contrib.auth.urls'),),
+    # URLS BIBLIOUSUARIOS
+    path('signup/', BUsuarios_views.SignUp.as_view(), name='signup'),
 ]
