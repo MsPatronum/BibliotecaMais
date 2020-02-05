@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     # 'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    #'django_select2',
-    #'bootstrap_modal_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -133,6 +132,9 @@ STATIC_URL = '/static/'
 # redirecionamento
 LOGIN_REDIRECT_URL = '/listar_livro/'
 LOGOUT_REDIRECT_URL = '/contas/login/'
+
+# MODELO DE USUÁRIOS CUSTOMIZADO
+AUTH_USER_MODEL = 'BiblioUsuarios.CustomUser'
 
 # teste de email
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"

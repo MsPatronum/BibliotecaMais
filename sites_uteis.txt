@@ -7,6 +7,9 @@ https://docs.djangoproject.com/pt-br/2.2/topics/db/models/#fields
 https://rayed.com/posts/2018/05/django-crud-create-retrieve-update-delete/
 https://realpython.com/modeling-polymorphism-django-python/
 
+*** TUTORIAIS DJANGO ***
+https://wsvincent.com/
+************************
 
 https://django-star-ratings.readthedocs.io/en/latest/
 

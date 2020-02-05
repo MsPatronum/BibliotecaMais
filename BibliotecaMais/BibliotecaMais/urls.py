@@ -21,7 +21,7 @@ from django.conf.urls import include
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='login.html'), name='home'),
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),
     # URLS BIBLIOLIVROS
     # URLS DE LOVROS
     path('criar_livro/', BLivros_views.LivroCriarView.as_view(), name='criar_livro_info'),
