@@ -7,12 +7,29 @@ https://docs.djangoproject.com/pt-br/2.2/topics/db/models/#fields
 https://rayed.com/posts/2018/05/django-crud-create-retrieve-update-delete/
 https://realpython.com/modeling-polymorphism-django-python/
 
-*** TUTORIAIS DJANGO ***
+*** TUTORIAIS  DJANGO ***
 https://wsvincent.com/
-************************
+
+Aqui tem um tutorial de como construir um sistema de recomendação colaborativo para implementação no sistema
+https://realpython.com/build-recommendation-engine-collaborative-filtering/
+*************************
+
+
+*** DATASETS P/ O TCC ***
+Neste dataset existem usuário, livros e uma relação entre eles com as "ratings" para treinamento da ferramenta
+*ideia: dividir a classificação por dois (pois o máximo é 10) para entrar na classificação de 5 estrelas
+http://www2.informatik.uni-freiburg.de/~cziegler/BX/
+
+https://github.com/anabastos/awesome-pesquisa
+
+*verificar como posso estar organizando e fazendo o download desses dados.
+*para isso eu teria uma base de dados com livros em português
+https://isbnsearch.org/isbn/856625001X
+*************************
+
 
 https://django-star-ratings.readthedocs.io/en/latest/
-
+ 
 
 https://pypi.org/project/django-bootstrap-modal-forms/
 $ pip install django-bootstrap-modal-forms
